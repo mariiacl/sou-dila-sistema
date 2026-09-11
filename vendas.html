@@ -12,6 +12,7 @@
     <span></span><span></span><span></span>
   </button>
 
+  <!-- MENU LATERAL -->
   <aside id="menu-lateral" class="menu-lateral">
     <div class="menu-logo">
       <h1>Sou Dila</h1>
@@ -31,7 +32,7 @@
       <a href="produtos.html"   class="menu-item">
         <span class="icone">📦</span> Produtos
       </a>
-      <a href="estampas.html" class="menu-item">
+      <a href="estampas.html"   class="menu-item">
         <span class="icone">🎨</span> Estampas
       </a>
       <a href="estoque.html"    class="menu-item">
@@ -57,6 +58,7 @@
 
   <div id="overlay" class="overlay"></div>
 
+  <!-- CONTEÚDO -->
   <main class="conteudo-principal">
 
     <header class="topo">
@@ -66,12 +68,46 @@
 
     <section class="area-conteudo">
 
-      <div class="bloco" style="text-align:center; padding: 60px 20px;">
-        <div style="font-size: 48px; margin-bottom: 16px;">🚧</div>
-        <h3 style="font-size: 20px; margin-bottom: 12px;">Em construção</h3>
-        <p class="vazio" style="padding: 0;">
-          Aqui você vai registrar e listar todas as vendas. Em breve!
-        </p>
+      <!-- FILTROS -->
+      <div class="barra-acoes">
+        <div class="barra-titulo">
+          <h3>Histórico de Vendas</h3>
+          <span id="contador-vendas" class="contador">0 vendas</span>
+        </div>
+        <button id="btn-nova-venda" class="btn-primario">
+          + Nova Venda
+        </button>
+      </div>
+
+      <!-- RESUMO DO MÊS -->
+      <div class="cards-numeros" id="resumo-vendas">
+        <div class="card-numero destaque-verde">
+          <span class="label">Faturamento</span>
+          <span class="valor" id="resumo-faturamento">R$ 0,00</span>
+          <span class="sub">mês atual</span>
+        </div>
+        <div class="card-numero destaque-azul">
+          <span class="label">Vendas</span>
+          <span class="valor" id="resumo-qtd">0</span>
+          <span class="sub">pedidos</span>
+        </div>
+        <div class="card-numero destaque-vermelho">
+          <span class="label">Custos</span>
+          <span class="valor" id="resumo-custos">R$ 0,00</span>
+          <span class="sub">mês atual</span>
+        </div>
+        <div class="card-numero destaque-dourado">
+          <span class="label">Lucro</span>
+          <span class="valor" id="resumo-lucro">R$ 0,00</span>
+          <span class="sub">mês atual</span>
+        </div>
+      </div>
+
+      <!-- LISTA DE VENDAS -->
+      <div class="bloco">
+        <div id="lista-vendas">
+          <p class="vazio">Carregando...</p>
+        </div>
       </div>
 
     </section>
@@ -82,10 +118,13 @@
 
   </main>
 
+  <!-- SDK + Módulos -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="assets/js/supabase.js"></script>
   <script src="assets/js/auth.js"></script>
+  <script src="assets/js/vendas.js"></script>
 
+  <!-- Menu mobile + data -->
   <script>
     const btnMenu     = document.getElementById('btn-menu-mobile');
     const menuLateral = document.getElementById('menu-lateral');
