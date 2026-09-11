@@ -14,7 +14,6 @@ const formProduto     = document.getElementById('form-produto');
 const btnSalvar       = document.getElementById('btn-salvar');
 const msgProduto      = document.getElementById('msg-produto');
 
-// Campos do formulário
 const campoId         = document.getElementById('produto-id');
 const campoNome       = document.getElementById('produto-nome');
 const campoDescricao  = document.getElementById('produto-descricao');
@@ -46,15 +45,13 @@ function escaparHtml(texto) {
     .replace(/"/g, '&quot;');
 }
 
-// -------- CARREGAR CATEGORIAS E COLEÇÕES --------
+// -------- CARREGAR LISTAS --------
 async function carregarListas() {
-  // Categorias
   const { data: cats } = await sb.from('categorias').select('id, nome').order('nome');
   categoriasCache = cats || [];
   campoCategoria.innerHTML = '<option value="">— Selecione —</option>' +
     categoriasCache.map(c => `<option value="${c.id}">${escaparHtml(c.nome)}</option>`).join('');
 
-  // Coleções
   const { data: cols } = await sb.from('colecoes').select('id, nome').order('nome');
   colecoesCache = cols || [];
   campoColecao.innerHTML = '<option value="">— Selecione —</option>' +
@@ -128,8 +125,9 @@ async function carregarProdutos() {
   grid.querySelectorAll('.excluir').forEach(btn => {
     btn.addEventListener('click', () => excluirProduto(Number(btn.dataset.id)));
   });
-  
-// -------- ABRIR MODAL NOVO --------
+}
+
+// -------- ABRIR NOVO --------
 function abrirNovo() {
   modalTitulo.textContent = 'Novo Produto';
   formProduto.reset();
@@ -139,7 +137,7 @@ function abrirNovo() {
   campoNome.focus();
 }
 
-// -------- ABRIR MODAL EDIÇÃO --------
+// -------- ABRIR EDIÇÃO --------
 function abrirEdicao(id) {
   const p = produtosCache.find(x => x.id === id);
   if (!p) return;
@@ -171,8 +169,8 @@ async function salvarProduto(e) {
 
   const id = campoId.value;
   const dados = {
-    nome:        campoNome.value.trim(),
-    descricao:   campoDescricao.value.trim() || null,
+    nome:         campoNome.value.trim(),
+    descricao:    campoDescricao.value.trim() || null,
     categoria_id: campoCategoria.value ? Number(campoCategoria.value) : null,
     colecao_id:   campoColecao.value ? Number(campoColecao.value) : null,
     imagem_url:   campoImagem.value.trim() || null,
@@ -215,11 +213,18 @@ async function excluirProduto(id) {
   const { error } = await sb.from('produtos').delete().eq('id', id);
   if (error) {
     console.error(error);
-    alert('Erro ao excluir produto.');
+    alert('Erro ao excluir produto. Ele pode ter variações vinculadas.');
     return;
   }
 
   await carregarProdutos();
+}
+
+// -------- ABRIR GERENCIADOR DE TAMANHOS --------
+function abrirTamanhos(idProduto) {
+  const p = produtosCache.find(x => x.id === idProduto);
+  if (!p) return;
+  alert(`Em breve: gerenciar tamanhos de "${p.nome}"`);
 }
 
 // -------- EVENTOS --------
@@ -228,31 +233,21 @@ if (btnFecharModal) btnFecharModal.addEventListener('click', fecharModal);
 if (btnCancelar)    btnCancelar.addEventListener('click', fecharModal);
 if (formProduto)    formProduto.addEventListener('submit', salvarProduto);
 
-// Fecha modal clicando fora
 if (modal) {
   modal.addEventListener('click', (e) => {
     if (e.target === modal) fecharModal();
   });
 }
 
-// Fecha modal com ESC
 document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape' && modal.classList.contains('aberto')) fecharModal();
 });
 
 // -------- INICIALIZAÇÃO --------
 (async () => {
-  // Aguarda a sessão ser validada pelo auth.js
   setTimeout(async () => {
     if (!listaProdutos) return;
     await carregarListas();
     await carregarProdutos();
   }, 300);
 })();
-
-// -------- ABRIR GERENCIADOR DE TAMANHOS --------
-function abrirTamanhos(idProduto) {
-  const p = produtosCache.find(x => x.id === idProduto);
-  if (!p) return;
-  alert(`Em breve: gerenciar tamanhos de "${p.nome}"`);
-}
