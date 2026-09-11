@@ -118,6 +118,133 @@
 
   </main>
 
+    <!-- MODAL DE NOVA VENDA -->
+  <div id="modal-venda" class="modal">
+    <div class="modal-conteudo modal-venda">
+      <div class="modal-header">
+        <h3 id="modal-venda-titulo">Nova Venda</h3>
+        <button id="btn-fechar-venda" class="btn-fechar">✕</button>
+      </div>
+
+      <form id="form-venda">
+
+        <!-- BLOCO 1: CLIENTE -->
+        <div class="venda-bloco">
+          <h4>Cliente</h4>
+          <select id="venda-cliente">
+            <option value="">— Venda avulsa (sem cliente) —</option>
+          </select>
+        </div>
+
+        <!-- BLOCO 2: ITENS -->
+        <div class="venda-bloco">
+          <h4>Itens da Venda</h4>
+
+          <div id="itens-venda">
+            <div class="itens-vazio">Nenhum item adicionado ainda.</div>
+          </div>
+
+          <!-- Linha de adicionar item -->
+          <div class="add-item-linha">
+            <div>
+              <label for="add-variacao">Produto / Estampa / Tamanho</label>
+              <select id="add-variacao">
+                <option value="">— Selecione —</option>
+              </select>
+            </div>
+            <div>
+              <label for="add-tamanho">Tamanho</label>
+              <select id="add-tamanho" disabled>
+                <option value="">— Escolha o produto —</option>
+              </select>
+            </div>
+            <div>
+              <label for="add-qtd">Qtd</label>
+              <input type="number" id="add-qtd" min="1" value="1">
+            </div>
+            <div>
+              <label for="add-preco">Preço</label>
+              <input type="text" id="add-preco" readonly placeholder="R$ 0,00">
+            </div>
+            <button type="button" id="btn-add-item" class="btn-add-item">
+              + Adicionar
+            </button>
+          </div>
+        </div>
+
+        <!-- BLOCO 3: PAGAMENTO E TOTAIS -->
+        <div class="venda-bloco">
+          <h4>Pagamento</h4>
+
+          <div class="linha-dupla">
+            <div>
+              <label for="venda-forma-pagamento">Forma de pagamento</label>
+              <select id="venda-forma-pagamento">
+                <option value="">— Selecione —</option>
+              </select>
+            </div>
+            <div>
+              <label for="venda-status">Status</label>
+              <select id="venda-status">
+                <option value="orcamento">Orçamento</option>
+                <option value="pedido">Pedido</option>
+                <option value="pago" selected>Pago</option>
+                <option value="producao">Em produção</option>
+                <option value="enviado">Enviado</option>
+                <option value="entregue">Entregue</option>
+                <option value="cancelado">Cancelado</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="linha-dupla">
+            <div>
+              <label for="venda-desconto">Desconto (R$)</label>
+              <input type="number" id="venda-desconto" min="0" step="0.01" value="0">
+            </div>
+            <div>
+              <label for="venda-frete">Frete (R$)</label>
+              <input type="number" id="venda-frete" min="0" step="0.01" value="0">
+            </div>
+          </div>
+
+          <div class="venda-resumo">
+            <div class="venda-resumo-linha">
+              <span>Subtotal</span>
+              <span id="venda-subtotal">R$ 0,00</span>
+            </div>
+            <div class="venda-resumo-linha">
+              <span>Desconto</span>
+              <span id="venda-desconto-view">− R$ 0,00</span>
+            </div>
+            <div class="venda-resumo-linha">
+              <span>Frete</span>
+              <span id="venda-frete-view">+ R$ 0,00</span>
+            </div>
+            <div class="venda-resumo-linha total">
+              <span>Total</span>
+              <span id="venda-total-view">R$ 0,00</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- BLOCO 4: OBSERVAÇÕES -->
+        <div class="venda-bloco">
+          <h4>Observações</h4>
+          <textarea id="venda-observacoes" rows="2" placeholder="Anotações sobre essa venda (opcional)"></textarea>
+        </div>
+
+        <div id="msg-venda" class="msg-erro" style="padding: 0 24px;"></div>
+
+        <div class="modal-acoes" style="padding: 0 24px 24px;">
+          <button type="button" id="btn-cancelar-venda" class="btn-secundario">Cancelar</button>
+          <button type="submit" id="btn-finalizar-venda" class="btn-primario">Finalizar Venda</button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+    
   <!-- SDK + Módulos -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="assets/js/supabase.js"></script>
