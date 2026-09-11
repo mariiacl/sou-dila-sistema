@@ -119,14 +119,16 @@ async function carregarProdutos() {
   listaProdutos.appendChild(grid);
 
   // Eventos dos botões
+  grid.querySelectorAll('.tamanhos').forEach(btn => {
+    btn.addEventListener('click', () => abrirTamanhos(Number(btn.dataset.id)));
+  });
   grid.querySelectorAll('.editar').forEach(btn => {
     btn.addEventListener('click', () => abrirEdicao(Number(btn.dataset.id)));
   });
   grid.querySelectorAll('.excluir').forEach(btn => {
     btn.addEventListener('click', () => excluirProduto(Number(btn.dataset.id)));
   });
-}
-
+  
 // -------- ABRIR MODAL NOVO --------
 function abrirNovo() {
   modalTitulo.textContent = 'Novo Produto';
@@ -247,3 +249,10 @@ document.addEventListener('keydown', (e) => {
     await carregarProdutos();
   }, 300);
 })();
+
+// -------- ABRIR GERENCIADOR DE TAMANHOS --------
+function abrirTamanhos(idProduto) {
+  const p = produtosCache.find(x => x.id === idProduto);
+  if (!p) return;
+  alert(`Em breve: gerenciar tamanhos de "${p.nome}"`);
+}
