@@ -1034,3 +1034,152 @@ body {
   .modal-acoes { flex-direction: column-reverse; }
   .modal-acoes button { width: 100%; }
 }
+
+
+/* ============================================
+   CLIENTES — Estilos específicos
+   ============================================ */
+
+/* Barra de busca */
+.barra-busca {
+  margin-bottom: 20px;
+}
+
+.barra-busca input {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid var(--cor-borda);
+  border-radius: 8px;
+  font-size: 14px;
+  font-family: inherit;
+  background: var(--cor-card);
+  transition: border-color .2s, box-shadow .2s;
+}
+
+.barra-busca input:focus {
+  outline: none;
+  border-color: var(--cor-secundaria);
+  box-shadow: 0 0 0 3px rgba(201, 160, 74, 0.15);
+}
+
+/* Linha tripla (Cidade / UF / CEP) */
+.linha-tripla {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1.5fr;
+  gap: 16px;
+}
+
+/* Lista de clientes (tabela) */
+.lista-clientes-tabela {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.lista-clientes-tabela thead th {
+  text-align: left;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: .5px;
+  color: var(--cor-texto-suave);
+  font-weight: 600;
+  padding: 12px 14px;
+  border-bottom: 2px solid var(--cor-borda);
+  white-space: nowrap;
+}
+
+.lista-clientes-tabela tbody td {
+  padding: 14px;
+  font-size: 14px;
+  color: var(--cor-texto);
+  border-bottom: 1px solid var(--cor-borda);
+  vertical-align: middle;
+}
+
+.lista-clientes-tabela tbody tr {
+  transition: background .15s;
+}
+
+.lista-clientes-tabela tbody tr:hover {
+  background: #fafafa;
+}
+
+.lista-clientes-tabela tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* Nome do cliente com destaque */
+.cliente-nome {
+  font-weight: 600;
+  color: var(--cor-texto);
+}
+
+/* WhatsApp / contato com ícone */
+.cliente-contato {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: var(--cor-texto-suave);
+}
+
+.cliente-contato a {
+  color: var(--cor-azul);
+  text-decoration: none;
+}
+
+.cliente-contato a:hover {
+  text-decoration: underline;
+}
+
+/* Coluna de ações */
+.tabela-acoes {
+  display: flex;
+  gap: 6px;
+  justify-content: flex-end;
+}
+
+/* Badge de total gasto */
+.badge-total {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  background: #e8f5e9;
+  color: var(--cor-sucesso);
+}
+
+.badge-total.zero {
+  background: #f0f0f0;
+  color: var(--cor-texto-suave);
+}
+
+/* Responsivo */
+@media (max-width: 900px) {
+  .linha-tripla {
+    grid-template-columns: 1fr 1fr;
+  }
+  .linha-tripla > div:first-child {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 600px) {
+  .linha-tripla {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  /* Esconde colunas menos importantes no mobile */
+  .lista-clientes-tabela thead th.col-cidade,
+  .lista-clientes-tabela thead th.col-total,
+  .lista-clientes-tabela tbody td.col-cidade,
+  .lista-clientes-tabela tbody td.col-total {
+    display: none;
+  }
+
+  .lista-clientes-tabela tbody td {
+    padding: 10px 8px;
+    font-size: 13px;
+  }
+}
