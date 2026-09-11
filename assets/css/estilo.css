@@ -1204,3 +1204,292 @@ body {
   font-size: 11px;
   color: var(--cor-texto-suave);
 }
+
+
+/* ============================================
+   VENDAS — Estilos específicos
+   ============================================ */
+
+/* Linha com detalhes da venda */
+.venda-linha-status {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .5px;
+  white-space: nowrap;
+}
+
+.status-orcamento { background: #f0f0f0; color: #666; }
+.status-pedido    { background: #e3f2fd; color: #1565c0; }
+.status-pago      { background: #e8f5e9; color: #2e7d32; }
+.status-producao  { background: #fff3e0; color: #b8860b; }
+.status-enviado   { background: #e1f5fe; color: #0277bd; }
+.status-entregue  { background: #c8e6c9; color: #1b5e20; }
+.status-cancelado { background: #ffebee; color: #c62828; }
+
+/* Número da venda */
+.venda-numero {
+  font-family: 'SF Mono', Monaco, monospace;
+  font-size: 12px;
+  color: var(--cor-texto-suave);
+  font-weight: 600;
+}
+
+/* Total da venda */
+.venda-total {
+  font-weight: 700;
+  color: var(--cor-sucesso);
+}
+
+/* Cliente na linha */
+.venda-cliente {
+  font-weight: 600;
+  color: var(--cor-texto);
+}
+
+.venda-cliente.avulso {
+  font-style: italic;
+  color: var(--cor-texto-suave);
+  font-weight: 400;
+}
+
+/* Data compacta */
+.venda-data {
+  font-size: 13px;
+  color: var(--cor-texto-suave);
+}
+
+/* Colunas específicas da tabela de vendas */
+.tabela-vendas .col-numero  { width: 90px; }
+.tabela-vendas .col-data    { width: 100px; }
+.tabela-vendas .col-status  { width: 110px; }
+.tabela-vendas .col-total   { width: 110px; text-align: right; }
+.tabela-vendas .col-acoes   { width: 120px; text-align: right; }
+
+/* Cabeçalho da tabela de vendas */
+.tabela-vendas thead th.col-total {
+  text-align: right;
+}
+
+/* ============================================
+   MODAL DE NOVA VENDA — estrutura
+   ============================================ */
+
+/* Modal grande para vendas */
+.modal-conteudo.modal-venda {
+  max-width: 780px;
+}
+
+.modal-venda .modal-header {
+  position: sticky;
+  top: 0;
+  background: var(--cor-card);
+  z-index: 2;
+}
+
+/* Blocos internos do modal */
+.venda-bloco {
+  padding: 20px 24px;
+  border-bottom: 1px solid var(--cor-borda);
+}
+
+.venda-bloco:last-child {
+  border-bottom: none;
+}
+
+.venda-bloco h4 {
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: .5px;
+  color: var(--cor-texto-suave);
+  margin-bottom: 14px;
+  font-weight: 600;
+}
+
+/* Itens da venda (mini tabela) */
+.tabela-itens {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.tabela-itens thead th {
+  font-size: 11px;
+  text-transform: uppercase;
+  color: var(--cor-texto-suave);
+  font-weight: 600;
+  text-align: left;
+  padding: 8px 6px;
+  border-bottom: 1px solid var(--cor-borda);
+}
+
+.tabela-itens tbody td {
+  padding: 10px 6px;
+  border-bottom: 1px solid #f0f0f0;
+  vertical-align: middle;
+}
+
+.tabela-itens tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.tabela-itens .item-descricao {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.tabela-itens .item-descricao strong {
+  font-size: 13px;
+}
+
+.tabela-itens .item-descricao span {
+  font-size: 11px;
+  color: var(--cor-texto-suave);
+}
+
+.tabela-itens .item-qtd {
+  text-align: center;
+  width: 60px;
+}
+
+.tabela-itens .item-valor {
+  text-align: right;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.tabela-itens .item-acoes {
+  text-align: right;
+  width: 40px;
+}
+
+/* Adicionar item */
+.add-item-linha {
+  display: grid;
+  grid-template-columns: 2fr 1.5fr 1fr .8fr auto;
+  gap: 8px;
+  align-items: end;
+  margin-top: 12px;
+}
+
+.add-item-linha > div {
+  display: flex;
+  flex-direction: column;
+}
+
+.add-item-linha label {
+  font-size: 11px;
+  color: var(--cor-texto-suave);
+  margin-bottom: 4px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.add-item-linha select,
+.add-item-linha input {
+  padding: 9px 10px;
+  border: 1px solid var(--cor-borda);
+  border-radius: 6px;
+  font-size: 13px;
+  font-family: inherit;
+  width: 100%;
+}
+
+.add-item-linha select:focus,
+.add-item-linha input:focus {
+  outline: none;
+  border-color: var(--cor-secundaria);
+}
+
+.btn-add-item {
+  padding: 9px 16px;
+  background: var(--cor-secundaria);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  height: 38px;
+}
+
+.btn-add-item:hover {
+  background: #b08a35;
+}
+
+.btn-add-item:disabled {
+  opacity: .5;
+  cursor: not-allowed;
+}
+
+/* Resumo do total da venda */
+.venda-resumo {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 16px 0;
+  border-top: 2px solid var(--cor-borda);
+  margin-top: 12px;
+}
+
+.venda-resumo-linha {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  color: var(--cor-texto-suave);
+}
+
+.venda-resumo-linha.total {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--cor-texto);
+  margin-top: 6px;
+  padding-top: 10px;
+  border-top: 1px solid var(--cor-borda);
+}
+
+.venda-resumo-linha.total span:last-child {
+  color: var(--cor-sucesso);
+}
+
+/* Estado vazio dos itens */
+.itens-vazio {
+  text-align: center;
+  padding: 24px 12px;
+  color: var(--cor-texto-suave);
+  font-size: 13px;
+  font-style: italic;
+  background: #fafafa;
+  border-radius: 8px;
+}
+
+/* Responsivo */
+@media (max-width: 700px) {
+  .add-item-linha {
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+
+  .add-item-linha > div:first-child {
+    grid-column: 1 / -1;
+  }
+
+  .btn-add-item {
+    grid-column: 1 / -1;
+    width: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  /* Esconde colunas menos importantes */
+  .tabela-vendas .col-numero,
+  .tabela-vendas .col-data {
+    display: none;
+  }
+}
