@@ -107,6 +107,7 @@ async function carregarProdutos() {
         </div>
       </div>
       <div class="acoes">
+        <button class="btn-icone tamanhos" data-id="${p.id}" title="Tamanhos">📐</button>
         <button class="btn-icone editar" data-id="${p.id}" title="Editar">✏️</button>
         <button class="btn-icone excluir" data-id="${p.id}" title="Excluir">🗑️</button>
       </div>
