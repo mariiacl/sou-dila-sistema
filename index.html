@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sou Dila — Sistema de Gestão</title>
+  <link rel="stylesheet" href="assets/css/estilo.css">
+</head>
+<body>
+
+  <!-- ========== TELA DE LOGIN ========== -->
+  <div id="tela-login" class="tela-login">
+    <div class="card-login">
+      <div class="logo">
+        <h1>Sou Dila</h1>
+        <p>Controle de Vendas</p>
+      </div>
+
+      <form id="form-login">
+        <label for="email">E-mail</label>
+        <input type="email" id="email" placeholder="seu@email.com" required autocomplete="email">
+
+        <label for="senha">Senha</label>
+        <input type="password" id="senha" placeholder="••••••••" required autocomplete="current-password">
+
+        <button type="submit" id="btn-entrar">Entrar</button>
+
+        <div id="msg-login" class="msg-erro"></div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ========== DASHBOARD ========== -->
+  <div id="tela-dashboard" class="tela-dashboard escondido">
+
+    <header class="topo">
+      <div class="topo-titulo">
+        <h1>Sou Dila</h1>
+        <span>Painel de Gestão</span>
+      </div>
+      <div class="topo-usuario">
+        <span id="usuario-email"></span>
+        <button id="btn-sair" class="btn-sair">Sair</button>
+      </div>
+    </header>
+
+    <main class="conteudo">
+      <h2 class="titulo-secao">Visão Geral do Mês</h2>
+
+      <section class="cards-numeros">
+        <div class="card-numero destaque-verde">
+          <span class="label">Faturamento</span>
+          <span class="valor" id="card-faturamento">R$ 0,00</span>
+          <span class="sub">mês atual</span>
+        </div>
+
+        <div class="card-numero destaque-azul">
+          <span class="label">Vendas</span>
+          <span class="valor" id="card-vendas">0</span>
+          <span class="sub">pedidos</span>
+        </div>
+
+        <div class="card-numero destaque-vermelho">
+          <span class="label">Custos</span>
+          <span class="valor" id="card-custos">R$ 0,00</span>
+          <span class="sub">mês atual</span>
+        </div>
+
+        <div class="card-numero destaque-dourado">
+          <span class="label">Lucro Bruto</span>
+          <span class="valor" id="card-lucro">R$ 0,00</span>
+          <span class="sub">mês atual</span>
+        </div>
+      </section>
+
+      <section class="bloco">
+        <h3>Últimas Vendas</h3>
+        <div id="lista-vendas">
+          <p class="vazio">Nenhuma venda registrada ainda.</p>
+        </div>
+      </section>
+
+      <section class="bloco">
+        <h3>Status do Sistema</h3>
+        <p class="status-sistema">
+          <span class="bolinha verde"></span>
+          Conectado ao Supabase
+        </p>
+      </section>
+    </main>
+
+    <footer class="rodape">
+      <p>Sou Dila © 2026 — Sistema Interno</p>
+    </footer>
+  </div>
+
+  <!-- SDK do Supabase (via CDN) -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="assets/js/app.js"></script>
+</body>
+</html>
