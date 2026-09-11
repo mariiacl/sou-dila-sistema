@@ -1183,3 +1183,24 @@ body {
     font-size: 13px;
   }
 }
+
+/* ============================================
+   ESTAMPAS — Preços nos cards
+   ============================================ */
+.precos {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin-top: 6px;
+}
+
+.preco-venda {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--cor-sucesso);
+}
+
+.preco-custo {
+  font-size: 11px;
+  color: var(--cor-texto-suave);
+}
