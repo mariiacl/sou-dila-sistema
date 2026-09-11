@@ -139,6 +139,92 @@
     </div>
   </div>
 
+    <!-- MODAL DE TAMANHOS (VARIAÇÕES) -->
+  <div id="modal-tamanhos" class="modal">
+    <div class="modal-conteudo modal-grande">
+      <div class="modal-header">
+        <h3 id="tamanhos-titulo">Gerenciar Tamanhos</h3>
+        <button id="btn-fechar-tamanhos" class="btn-fechar">✕</button>
+      </div>
+
+      <div class="tamanhos-corpo">
+
+        <div class="barra-acoes">
+          <div class="barra-titulo">
+            <h3>Tamanhos Cadastrados</h3>
+            <span id="contador-tamanhos" class="contador">0 tamanhos</span>
+          </div>
+          <button id="btn-novo-tamanho" class="btn-primario">
+            + Adicionar Tamanho
+          </button>
+        </div>
+
+        <div id="lista-tamanhos">
+          <p class="vazio">Carregando...</p>
+        </div>
+
+        <!-- SUB-FORMULÁRIO DE ADICIONAR/EDITAR TAMANHO -->
+        <div id="form-tamanho-wrap" class="form-tamanho-wrap escondido">
+          <h4 id="form-tamanho-titulo">Novo Tamanho</h4>
+
+          <form id="form-tamanho">
+            <input type="hidden" id="tamanho-id">
+
+            <div class="linha-dupla">
+              <div>
+                <label for="tamanho-estampa">Estampa *</label>
+                <select id="tamanho-estampa" required>
+                  <option value="">— Selecione —</option>
+                </select>
+              </div>
+              <div>
+                <label for="tamanho-tamanho">Tamanho *</label>
+                <select id="tamanho-tamanho" required>
+                  <option value="">— Selecione —</option>
+                  <option value="PP">PP</option>
+                  <option value="P">P</option>
+                  <option value="M">M</option>
+                  <option value="G">G</option>
+                  <option value="GG">GG</option>
+                  <option value="XG">XG</option>
+                  <option value="XXG">XXG</option>
+                  <option value="ÚNICO">ÚNICO</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="linha-dupla">
+              <div>
+                <label for="tamanho-sku">SKU (opcional)</label>
+                <input type="text" id="tamanho-sku" placeholder="Ex: CAM-OX-P">
+              </div>
+              <div>
+                <label for="tamanho-estoque">Estoque inicial</label>
+                <input type="number" id="tamanho-estoque" min="0" value="0">
+              </div>
+            </div>
+
+            <div class="linha-dupla">
+              <div>
+                <label for="tamanho-estoque-minimo">Estoque mínimo (alerta)</label>
+                <input type="number" id="tamanho-estoque-minimo" min="0" value="0">
+              </div>
+              <div></div>
+            </div>
+
+            <div id="msg-tamanho" class="msg-erro"></div>
+
+            <div class="modal-acoes">
+              <button type="button" id="btn-cancelar-tamanho" class="btn-secundario">Cancelar</button>
+              <button type="submit" id="btn-salvar-tamanho" class="btn-primario">Salvar Tamanho</button>
+            </div>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  
   <!-- SDK + Módulos -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="assets/js/supabase.js"></script>
