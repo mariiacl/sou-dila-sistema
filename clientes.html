@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sou Dila — Clientes</title>
+  <link rel="stylesheet" href="assets/css/estilo.css">
+</head>
+<body>
+
+  <button id="btn-menu-mobile" class="btn-menu-mobile" aria-label="Abrir menu">
+    <span></span><span></span><span></span>
+  </button>
+
+  <aside id="menu-lateral" class="menu-lateral">
+    <div class="menu-logo">
+      <h1>Sou Dila</h1>
+      <p>Painel de Gestão</p>
+    </div>
+
+    <nav class="menu-nav">
+      <a href="dashboard.html"  class="menu-item">
+        <span class="icone">🏠</span> Dashboard
+      </a>
+      <a href="vendas.html"     class="menu-item">
+        <span class="icone">🛍️</span> Vendas
+      </a>
+      <a href="clientes.html"   class="menu-item ativo">
+        <span class="icone">👥</span> Clientes
+      </a>
+      <a href="produtos.html"   class="menu-item">
+        <span class="icone">📦</span> Produtos
+      </a>
+      <a href="estoque.html"    class="menu-item">
+        <span class="icone">📊</span> Estoque
+      </a>
+      <a href="financeiro.html" class="menu-item">
+        <span class="icone">💰</span> Financeiro
+      </a>
+      <a href="relatorios.html" class="menu-item">
+        <span class="icone">📈</span> Relatórios
+      </a>
+    </nav>
+
+    <div class="menu-rodape">
+      <div class="menu-usuario">
+        <span id="usuario-email"></span>
+      </div>
+      <button id="btn-sair" class="btn-sair">
+        🚪 Sair
+      </button>
+    </div>
+  </aside>
+
+  <div id="overlay" class="overlay"></div>
+
+  <main class="conteudo-principal">
+
+    <header class="topo">
+      <h2>Clientes</h2>
+      <span class="data-atual" id="data-atual"></span>
+    </header>
+
+    <section class="area-conteudo">
+
+      <div class="bloco" style="text-align:center; padding: 60px 20px;">
+        <div style="font-size: 48px; margin-bottom: 16px;">🚧</div>
+        <h3 style="font-size: 20px; margin-bottom: 12px;">Em construção</h3>
+        <p class="vazio" style="padding: 0;">
+          Aqui você vai cadastrar e gerenciar seus clientes. Em breve!
+        </p>
+      </div>
+
+    </section>
+
+    <footer class="rodape">
+      <p>Sou Dila © 2026 — Sistema Interno</p>
+    </footer>
+
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="assets/js/supabase.js"></script>
+  <script src="assets/js/auth.js"></script>
+
+  <script>
+    const btnMenu     = document.getElementById('btn-menu-mobile');
+    const menuLateral = document.getElementById('menu-lateral');
+    const overlay     = document.getElementById('overlay');
+
+    function abrirMenu() {
+      menuLateral.classList.add('aberto');
+      overlay.classList.add('ativo');
+    }
+    function fecharMenu() {
+      menuLateral.classList.remove('aberto');
+      overlay.classList.remove('ativo');
+    }
+
+    if (btnMenu) btnMenu.addEventListener('click', abrirMenu);
+    if (overlay) overlay.addEventListener('click', fecharMenu);
+
+    const dataAtual = document.getElementById('data-atual');
+    if (dataAtual) {
+      const hoje = new Date();
+      dataAtual.textContent = hoje.toLocaleDateString('pt-BR', {
+        weekday: 'long', day: '2-digit', month: 'long', year: 'numeric'
+      });
+    }
+  </script>
+
+</body>
+</html>
