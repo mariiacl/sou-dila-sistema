@@ -12,6 +12,7 @@
     <span></span><span></span><span></span>
   </button>
 
+  <!-- MENU LATERAL -->
   <aside id="menu-lateral" class="menu-lateral">
     <div class="menu-logo">
       <h1>Sou Dila</h1>
@@ -54,6 +55,7 @@
 
   <div id="overlay" class="overlay"></div>
 
+  <!-- CONTEÚDO -->
   <main class="conteudo-principal">
 
     <header class="topo">
@@ -63,12 +65,27 @@
 
     <section class="area-conteudo">
 
-      <div class="bloco" style="text-align:center; padding: 60px 20px;">
-        <div style="font-size: 48px; margin-bottom: 16px;">🚧</div>
-        <h3 style="font-size: 20px; margin-bottom: 12px;">Em construção</h3>
-        <p class="vazio" style="padding: 0;">
-          Aqui você vai cadastrar e gerenciar seus clientes. Em breve!
-        </p>
+      <!-- BARRA DE AÇÕES -->
+      <div class="barra-acoes">
+        <div class="barra-titulo">
+          <h3>Lista de Clientes</h3>
+          <span id="contador-clientes" class="contador">0 clientes</span>
+        </div>
+        <button id="btn-novo-cliente" class="btn-primario">
+          + Novo Cliente
+        </button>
+      </div>
+
+      <!-- BARRA DE BUSCA -->
+      <div class="barra-busca">
+        <input type="text" id="busca-cliente" placeholder="🔍  Buscar por nome, WhatsApp ou cidade...">
+      </div>
+
+      <!-- LISTA DE CLIENTES -->
+      <div class="bloco">
+        <div id="lista-clientes">
+          <p class="vazio">Carregando...</p>
+        </div>
       </div>
 
     </section>
@@ -79,10 +96,72 @@
 
   </main>
 
+  <!-- MODAL DE NOVO/EDITAR CLIENTE -->
+  <div id="modal-cliente" class="modal">
+    <div class="modal-conteudo">
+      <div class="modal-header">
+        <h3 id="modal-titulo">Novo Cliente</h3>
+        <button id="btn-fechar-modal" class="btn-fechar">✕</button>
+      </div>
+
+      <form id="form-cliente">
+        <input type="hidden" id="cliente-id">
+
+        <label for="cliente-nome">Nome *</label>
+        <input type="text" id="cliente-nome" required placeholder="Ex: Maria Silva">
+
+        <div class="linha-dupla">
+          <div>
+            <label for="cliente-whatsapp">WhatsApp</label>
+            <input type="text" id="cliente-whatsapp" placeholder="(11) 99999-9999">
+          </div>
+          <div>
+            <label for="cliente-instagram">Instagram</label>
+            <input type="text" id="cliente-instagram" placeholder="@usuario">
+          </div>
+        </div>
+
+        <label for="cliente-email">E-mail</label>
+        <input type="text" id="cliente-email" placeholder="cliente@email.com">
+
+        <div class="linha-tripla">
+          <div>
+            <label for="cliente-cidade">Cidade</label>
+            <input type="text" id="cliente-cidade" placeholder="São Paulo">
+          </div>
+          <div>
+            <label for="cliente-uf">UF</label>
+            <input type="text" id="cliente-uf" placeholder="SP" maxlength="2">
+          </div>
+          <div>
+            <label for="cliente-cep">CEP</label>
+            <input type="text" id="cliente-cep" placeholder="00000-000">
+          </div>
+        </div>
+
+        <label for="cliente-endereco">Endereço</label>
+        <input type="text" id="cliente-endereco" placeholder="Rua, número, complemento">
+
+        <label for="cliente-observacoes">Observações</label>
+        <textarea id="cliente-observacoes" rows="2" placeholder="Ex: prefere contato por WhatsApp"></textarea>
+
+        <div id="msg-cliente" class="msg-erro"></div>
+
+        <div class="modal-acoes">
+          <button type="button" id="btn-cancelar" class="btn-secundario">Cancelar</button>
+          <button type="submit" id="btn-salvar" class="btn-primario">Salvar Cliente</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- SDK + Módulos -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="assets/js/supabase.js"></script>
   <script src="assets/js/auth.js"></script>
+  <script src="assets/js/clientes.js"></script>
 
+  <!-- Menu mobile + data -->
   <script>
     const btnMenu     = document.getElementById('btn-menu-mobile');
     const menuLateral = document.getElementById('menu-lateral');
