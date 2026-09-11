@@ -224,7 +224,7 @@ async function excluirProduto(id) {
 function abrirTamanhos(idProduto) {
   const p = produtosCache.find(x => x.id === idProduto);
   if (!p) return;
-  alert(`Em breve: gerenciar tamanhos de "${p.nome}"`);
+  abrirModalTamanhos(p.id, p.nome);
 }
 
 // -------- EVENTOS --------
