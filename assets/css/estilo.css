@@ -1493,3 +1493,143 @@ body {
     display: none;
   }
 }
+
+
+/* ============================================
+   MODAL DE VENDA — complementos
+   ============================================ */
+
+/* Selects e inputs dentro do modal de venda */
+.modal-venda select,
+.modal-venda input[type="text"],
+.modal-venda input[type="number"],
+.modal-venda textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--cor-borda);
+  border-radius: 8px;
+  font-size: 14px;
+  font-family: inherit;
+  background: #fff;
+  transition: border-color .2s;
+}
+
+.modal-venda select:focus,
+.modal-venda input:focus,
+.modal-venda textarea:focus {
+  outline: none;
+  border-color: var(--cor-secundaria);
+}
+
+.modal-venda select:disabled,
+.modal-venda input:disabled {
+  background: #f4f4f4;
+  color: #999;
+  cursor: not-allowed;
+}
+
+.modal-venda label {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--cor-texto-suave);
+  margin-bottom: 6px;
+  text-transform: uppercase;
+  letter-spacing: .3px;
+}
+
+/* Preço readonly */
+#add-preco {
+  background: #f9f9f9;
+  font-weight: 600;
+  color: var(--cor-sucesso);
+}
+
+/* Blocos internos com espaçamento correto */
+.venda-bloco .linha-dupla {
+  margin-top: 0;
+}
+
+.venda-bloco .linha-dupla + .linha-dupla {
+  margin-top: 14px;
+}
+
+/* Botão de adicionar item — ajuste fino */
+.btn-add-item {
+  align-self: end;
+}
+
+/* Card de item dentro da venda */
+.item-venda {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 14px;
+  background: #fafafa;
+  border-radius: 8px;
+  margin-bottom: 8px;
+  font-size: 14px;
+  gap: 12px;
+}
+
+.item-venda-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.item-venda-info strong {
+  font-size: 14px;
+  color: var(--cor-texto);
+  display: block;
+  margin-bottom: 2px;
+}
+
+.item-venda-info span {
+  font-size: 12px;
+  color: var(--cor-texto-suave);
+}
+
+.item-venda-qtd {
+  font-size: 13px;
+  color: var(--cor-texto-suave);
+  white-space: nowrap;
+}
+
+.item-venda-valor {
+  font-weight: 700;
+  color: var(--cor-sucesso);
+  white-space: nowrap;
+}
+
+.item-venda .btn-icone {
+  width: 28px;
+  height: 28px;
+  font-size: 12px;
+}
+
+/* Ajuste responsivo do modal de venda */
+@media (max-width: 700px) {
+  .modal-conteudo.modal-venda {
+    max-width: 100%;
+    max-height: 95vh;
+  }
+
+  .venda-bloco {
+    padding: 16px;
+  }
+
+  .item-venda {
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 600px) {
+  .modal-venda .modal-acoes {
+    flex-direction: column-reverse;
+    padding: 0 16px 16px;
+  }
+
+  .modal-venda .modal-acoes button {
+    width: 100%;
+  }
+}
